@@ -28,11 +28,21 @@ The code in this repository in part of a project on encoding models of the visua
 3. Linear regression and Evaluation (ensemble2.py): A linear regression is fit on top of the ensemble features to predict the target subject's neural responses. This is repeated 100 times with random subsamples of varying train_size to assess sample efficiency.
 4. Support modules: models.py defines the architecture, dataloaders.py handles data loading, usefuncs.py provides loss, scoring, and checkpoint utilities.
 
+## Data
+The data for this project comes from the NSD dataset (https://naturalscenesdataset.org/). Specifically, we are using the preprocessed version of the data, in its version number 3, which is the least noisy one and therefore the most appropriate in the contex of the scope of this project. To run the code we have prepared and made available on kaggle a version of the data in the correct format and already split in test, train and validation sets, which can be found at the following links:
+1. S1: https://www.kaggle.com/datasets/veronicascozzi/nsd-s1-test-val-train
+2. S2: https://www.kaggle.com/datasets/veronicascozzi/nsd-s2-test-val-train
+3. S3: https://www.kaggle.com/datasets/veronicascozzi/nsd-s3-test-val-train
+4. S4: https://www.kaggle.com/datasets/veronicascozzi/nsd-s4-test-val-train
+5. S5: https://www.kaggle.com/datasets/veronicascozzi/nsd-s5-test-val-train
+6. S6: https://www.kaggle.com/datasets/veronicascozzi/nsd-s6-test-val-train
+7. S7: https://www.kaggle.com/datasets/veronicascozzi/nsd-s7-test-val-train
+8. S8: https://www.kaggle.com/datasets/veronicascozzi/nsd-s8-test-val-train
+
+These datasets contain 6 files each, which are arrays of images and corresponding responses for each one of the sets. For the images presented more than once, the response was averaged across trials in order to both further increase the SNR and decrease the training time of the individual model. The total amount of data therefor consists of about 10000 image-response pairs, of which 500 make up the validation set, the 766 image that were shared across subject and seen at least twice by all of the subject, together with their corresponding responses, make up the test set, while the remaining at most 8500 make up the train set.
+
 ## Project structure
 add a description of the structure the local directory should have once one has downloaded all data and all scripts.
-
-## Data
-describe data roughly and put link to kaggle datasets.
 
 ## Usage
 add description and commands to run to succesfully use the code.
