@@ -2,7 +2,7 @@
 This readme file presents main facts about the project and how to use the and run the files in this repository.
 
 ## Introduction
-The code in this repository in part of a project on encoding models of the visual cortex. The aim of this project is building an encoding model with the minimum possible amount of data in such a way that the accuracy of the model is comparable to that of another "baseline" model utilizing all the data available for a given subject. Part of the code in this repo is based on the work of Gu et al (2022) "Personalized visual encoding model construction with small data". The results reported in this paper might have a limitation regarding spatial resolution: the accuracy of their model is only comparable to the accuracy of the complete model when predicting the average activation of a ROI, not its voxel-wise activation. 
+The code in this repository in part of a project on encoding models of some areas of the visual cortex, specifically V1v, PPA, EBA and FFA1. The aim of this project is building an encoding model with the minimum possible amount of data in such a way that the accuracy of the model is comparable to that of another "baseline" model utilizing all the data available for a given subject. Part of the code in this repo is based on the work of Gu et al (2022) "Personalized visual encoding model construction with small data". The results reported in this paper might have a limitation regarding spatial resolution: the accuracy of their model is only comparable to the accuracy of the complete model when predicting the average activation of a ROI, not its voxel-wise activation. 
 
 ### Files
 1. dataloaders.py: Defines the NSDdataset PyTorch Dataset. Loads images and ROI neural responses from disk for a given subject and split (train/val/test). If train_size is specified, randomly subsamples the training data with a subject-seeded RNG for reproducibility. Images are transposed and normalized with ImageNet stats. Returns (image, response) pairs.
@@ -44,5 +44,12 @@ These datasets contain 6 files each, which are arrays of images and correspondin
 ## Project structure
 add a description of the structure the local directory should have once one has downloaded all data and all scripts.
 
-## Usage
-add description and commands to run to succesfully use the code.
+## Usage:
+1. First of all, we need to run the training for the 20K (10K in our case) model, which can be done by using the following command:
+
+python individual_model.py --subject *subject_number1-8* --roi *roi_name* 
+
+This must be done for all rois and all subject.
+
+2. After this has been done, you'll have a directory called ckpt_ROI, containing for every subject the its checkpoint for each roi, make sure that the name of these files is best_resnet50_roiname_finetune_linear.pth.tar or last_resnet50_roiname_finetune_linear.pth.tar. You won't need the last ones, but the code saves both.
+3. 
