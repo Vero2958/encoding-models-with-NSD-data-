@@ -45,31 +45,31 @@ For those who wish to run this code on a cloud (highly recomended), for easier a
 * https://www.kaggle.com/datasets/veronicascozzi/nsd-research-files
 
 ## Usage:
-1. **Run individual models training**
+1. **Run individual models training:**
    First of all, we need to run the training for the 20K (10K in our case) model, which can be done by using the following command:
    ```bash
    python individual_model.py --subject *subject_number1-8* --roi *roi_name*
    ```
    This must be done for all ROIs and all subjects.
 
-2. **Verify checkpoints directory**
+2. **Verify checkpoints directory:**
    After this has been done, you'll have a directory called `ckpt_ROI`, containing the checkpoint for each ROI for every subject. Make sure that the name of these files is `best_resnet50_roiname_finetune_linear.pth.tar` or `last_resnet50_roiname_finetune_linear.pth.tar`. You won't need the `last` ones, but the code saves both.
 
-3. **Run ensemble.py**
+3. **Run ensemble.py:**
    Now the checkpoints can be used to train and test the ensemble model. Run `ensemble.py` using the following command:
    ```bash
    python ensemble.py --subject *subject_number1-8* --roi *roi_name*
    ```
    After this finishes running, the necessary files to run `ensemble2.py` should be found in the directory `./output/nsd_ensemble/nsd_pred_responses`.
 
-4. **Run ensemble2.py**
+4. **Run ensemble2.py:**
    At this point, `ensemble2.py` can be run using the following command:
    ```bash
    python ensemble2.py --subject *subject_number1-8* --roi *roi_name* --train_size *train_size*
    ```
    The output is saved in the directory `./output/nsd_ensemble/repeat100/size%d/`.
 
-5. **Read the output**
+5. **Read the output:**
    Lastly, the output can be read by using the script called `read_output.py`. Simply change the filename in the `np.load()` command. For example, change it from `./output/nsd_ensemble/repeat100/size300/S2_V1v.npy` to `./output/nsd_ensemble/repeat100/size300/S3_FFA1.npy`.
 
 ## Project structure
